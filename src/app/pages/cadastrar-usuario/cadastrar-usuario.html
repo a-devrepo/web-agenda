@@ -1,3 +1,15 @@
+<div class="message-container">
+  <div *ngIf="mensagemErro()" class="alert alert-danger alert-dismissible fade show shadow" role="alert">
+    <strong>{{ mensagemErro() }}</strong>
+    <button type="button" class="btn-close" (click)="mensagemErro.set('')"></button>
+  </div>
+
+  <div *ngIf="mensagemSucesso()" class="alert alert-success alert-dismissible fade show shadow" role="alert">
+    <strong>{{ mensagemSucesso() }}</strong>
+    <button type="button" class="btn-close" (click)="mensagemSucesso.set('')"></button>
+  </div>
+</div>
+
 <div class="bg-gradient-custom d-flex align-items-center justify-content-center">
 
   <div class="container">
@@ -13,27 +25,27 @@
                       <p class="text-muted">Crie sua conta</p>
                   </div>
 
-                  <form>
+                  <form [formGroup]="formulario" (ngSubmit)="cadastrar()">
 
                       <div class="mb-3">
                           <label for="nome" class="form-label">Nome</label>
-                          <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo"
+                          <input type="text" formControlName="nome" class="form-control" id="nome" placeholder="Digite seu nome completo"
                               required>
                       </div>
 
                       <div class="mb-3">
                           <label for="email" class="form-label">Email</label>
-                          <input type="email" class="form-control" id="email" placeholder="Digite seu email" required>
+                          <input type="email" formControlName="email" class="form-control" id="email" placeholder="Digite seu email" required>
                       </div>
 
                       <div class="mb-3">
                           <label for="senha" class="form-label">Senha</label>
-                          <input type="password" class="form-control" id="senha" placeholder="Crie uma senha"
+                          <input type="password" formControlName="senha" class="form-control" id="senha" placeholder="Crie uma senha"
                               required>
                       </div>
 
                       <div class="d-grid mb-3">
-                          <button type="submit" class="btn btn-success">
+                          <button type="submit" class="btn btn-success" [disabled]="formulario.invalid">
                               Cadastrar
                           </button>
                       </div>
