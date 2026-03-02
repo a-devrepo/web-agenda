@@ -1,1 +1,58 @@
-<p>cadastrar-usuario works!</p>
+<div class="bg-gradient-custom d-flex align-items-center justify-content-center">
+
+  <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-md-6 col-lg-4">
+
+              <div class="card shadow-lg p-4 register-card">
+
+                  <div class="text-center mb-1">
+                      <img src="https://cdn-icons-png.flaticon.com/512/747/747310.png" alt="Logo WebAgenda"
+                          class="logo mb-2">
+                      <h3 class="system-title">WebAgenda</h3>
+                      <p class="text-muted">Crie sua conta</p>
+                  </div>
+
+                  <form>
+
+                      <div class="mb-3">
+                          <label for="nome" class="form-label">Nome</label>
+                          <input type="text" class="form-control" id="nome" placeholder="Digite seu nome completo"
+                              required>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" class="form-control" id="email" placeholder="Digite seu email" required>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for="senha" class="form-label">Senha</label>
+                          <input type="password" class="form-control" id="senha" placeholder="Crie uma senha"
+                              required>
+                      </div>
+
+                      <div class="d-grid mb-3">
+                          <button type="submit" class="btn btn-success">
+                              Cadastrar
+                          </button>
+                      </div>
+
+                      <div class="text-center">
+                          <small>
+                              Já possui uma conta?
+                              <a routerLink="/pages/autenticar-usuario" class="text-decoration-none fw-bold">
+                                  Fazer login
+                              </a>
+                          </small>
+                      </div>
+
+                  </form>
+
+              </div>
+
+          </div>
+      </div>
+  </div>
+
+</div>
