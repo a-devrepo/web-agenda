@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-autenticar-usuario',
@@ -17,7 +17,8 @@ import { RouterLink } from "@angular/router";
 })
 export class AutenticarUsuario {
 
-  httpClient = inject(HttpClient);
+  private httpClient = inject(HttpClient);
+  private router = inject(Router);
 
   mensagemErro = signal<string>('');
 
@@ -41,8 +42,10 @@ export class AutenticarUsuario {
     this.httpClient.post(this.baseUrl+'/autenticar', usuario,{responseType: 'text'})
     .subscribe({
       next: (res:any) => {
+        const objetoJson =JSON.parse(res);
+        sessionStorage.setItem('usuario', JSON.stringify(objetoJson));
+        this.router.navigate(['pages/dashboard']);
 
-        this.formulario.reset();
       },
       error: (err:any) => {
 
