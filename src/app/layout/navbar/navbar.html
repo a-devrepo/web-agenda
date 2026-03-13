@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+  <div class="container-fluid">
+
+      <a class="navbar-brand" [routerLink]="['/pages/dashboard']">WEB-AGENDA</a>
+
+      <div class="d-flex align-items-center text-white">
+
+          <span class="me-3">
+              Usuário: <strong>{{nomeUsuario()}}</strong> | Perfil: <strong>{{perfilUsuario()}}</strong>
+          </span>
+
+          <button class="btn btn-outline-light mr-3 btn-sm" (click)="logout()">
+              Sair da agenda
+          </button>
+
+      </div>
+
+  </div>
+</nav>
