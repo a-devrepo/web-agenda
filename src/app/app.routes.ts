@@ -29,7 +29,7 @@ export const routes: Routes = [
     component: ConsultarCategoria,
   },
   {
-    path: 'pages/editar-categoria', canActivate:[AuthGuard],
+    path: 'pages/editar-categoria/:id', canActivate:[AuthGuard],
     component: EditarCategoria,
   },
   {
