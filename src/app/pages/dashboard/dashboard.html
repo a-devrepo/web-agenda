@@ -2,34 +2,51 @@
 <app-navbar/>
 
 <div class="container-fluid">
-  <div class="row">
+    <div class="row">
 
-      <!-- MENU LATERAL -->
-      <div class="col-md-2 bg-light min-vh-100 pt-3">
-        <app-sidebar/>
-      </div>
+        <!-- MENU LATERAL -->
+        <div class="col-md-2 bg-light min-vh-100 pt-3">
+          <app-sidebar/>
+        </div>
 
-      <!-- ÁREA CENTRAL -->
-      <div class="col-md-10 p-4">
+        <!-- ÁREA CENTRAL -->
+        <div class="col-md-10 p-4">
 
-          <div class="card shadow">
-              <div class="card-body">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4>Seja bem-vindo ao sistema WEB-AGENDA</h4>
+                    <p>Dashboard principal</p>
 
-                  <h2>Seja bem-vindo ao sistema WEB-AGENDA</h2>
+                    <form [formGroup]="formulario" (ngSubmit)="consultar()">
 
-                  <p>
-                      Este sistema permite gerenciar suas tarefas e compromissos.
-                  </p>
+                        <div class="row mb-3">
+                            <div class="col-md-3">
+                                <input type="date" class="form-control" formControlName="dataMin"/>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="date" class="form-control" formControlName="dataMax"/>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-success" value="Pesquisar"
+                                    [disabled]="formulario.invalid"/>
+                            </div>
+                        </div>
 
-                  <p>
-                      Utilize o menu lateral para acessar as funcionalidades disponíveis.
-                  </p>
+                    </form>
 
+                    <div class="mt-3 row">
+                        <div class="col">
+                            <div [chart]="graficoDonut()"></div>
+                        </div>
+                        <div class="col">
+                            <div [chart]="graficoColunas()"></div>
+                        </div>
+                    </div>
 
-              </div>
-          </div>
+                </div>
+            </div>
 
-      </div>
+        </div>
 
-  </div>
+    </div>
 </div>

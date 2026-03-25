@@ -36,7 +36,7 @@ export class ConsultarTarefa {
   });
 
   ngOnInit(): void {
-    this.carregarTarefas();
+    // this.carregarTarefas();
 
     const hoje = new Date();
     const primeiroDia = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
