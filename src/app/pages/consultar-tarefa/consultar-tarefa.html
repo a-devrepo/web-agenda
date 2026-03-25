@@ -1,1 +1,73 @@
-<p>consultar-tarefa works!</p>
+<!-- MENU SUPERIOR -->
+<app-navbar/>
+
+<div class="container-fluid">
+  <div class="row">
+
+      <!-- MENU LATERAL -->
+      <div class="col-md-2 bg-light min-vh-100 pt-3">
+        <app-sidebar/>
+      </div>
+
+      <!-- ÁREA CENTRAL -->
+      <div class="col-md-10 p-4">
+
+          <div class="card shadow">
+              <div class="card-body">
+
+                <h4>Consulta de tarefas</h4>
+                <p>Listagem de tarefas cadastradas em sua agenda</p>
+
+                @if(mensagemSucesso()) {
+                  <div class="message-container">
+                    <div class="alert alert-success alert-dismissible fade show shadow" role="alert">
+                      <strong>{{ mensagemSucesso() }}</strong>
+                      <button type="button" class="btn-close" (click)="mensagemSucesso.set('')"></button>
+                    </div>
+                  </div>
+              } @else if(mensagemErro()) {
+                <div class="message-container">
+                  <div class="alert alert-danger alert-dismissible fade show shadow" role="alert">
+                    <strong>{{ mensagemErro() }}</strong>
+                    <button type="button" class="btn-close" (click)="mensagemErro.set('')"></button>
+                  </div>
+                </div>
+              }
+
+                @if(tarefas().length == 0){
+                  <div class="alert  alert-warning">
+                    Não há tarefas cadastradas em sua agenda
+                  </div>
+                }@else if(tarefas().length > 0){
+                    <table class="table table-hover table-sm">
+                      <thead>
+                        <tr>
+                          <th>Nome da tarefa</th>
+                          <th>Ações</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for(c of tarefas(); track c.id){
+                          <tr>
+                            <td>{{c.nome | uppercase }}</td>
+                            <button class="btn btn-outline-primary me-1" [routerLink]="['/pages/editar-tarefa', c.id]">Editar</button>
+                            <button class="btn btn-outline-danger" (click)="onDelete(c)">Excluir</button>
+                          </tr>
+                        }
+                      </tbody>
+                      <tfoot>
+                        <tr>
+                          <td colspan="2">
+                            Total de registros: {{tarefas().length}}
+                          </td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  }
+              </div>
+          </div>
+
+      </div>
+
+  </div>
+</div>
